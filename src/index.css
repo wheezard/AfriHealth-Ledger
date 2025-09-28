@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Lumi Health - Hedera Blockchain Healthcare Platform Design System */
+
+@layer base {
+  :root {
+    /* Core Healthcare Colors */
+    --background: 0 0% 100%;
+    --foreground: 220 13% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 13%;
+
+    /* Lumi Green - Primary Healthcare Brand */
+    --primary: 142 100% 42%;  /* #00D564 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 142 100% 85%;
+    --primary-dark: 142 100% 25%;
+
+    /* Medical Blue - Secondary Actions */
+    --secondary: 200 98% 46%;  /* #0EA5E9 */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 200 98% 85%;
+
+    /* Clean Medical Interface */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 142 100% 96%;
+    --accent-foreground: 142 100% 25%;
+
+    /* Status Colors */
+    --success: 142 100% 42%;  /* Active/Approved */
+    --warning: 45 93% 58%;    /* Pending */
+    --destructive: 0 84% 60%; /* Expired/Revoked */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Medical Interface Elements */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 142 100% 42%;
+
+    /* 3D & Blockchain Effects */
+    --hedera-glow: 142 100% 42%;
+    --node-primary: 142 100% 42%;
+    --node-secondary: 200 98% 46%;
+    --particle-base: 0 0% 95%;
+
+    /* Status Colors */
+    --accent-success: 120 100% 40%;
+    --accent-success-foreground: 120 100% 95%;
+    --accent-warning: 45 100% 50%;
+    --accent-warning-foreground: 45 100% 10%;
+    --accent-info: 210 100% 50%;
+    --accent-info-foreground: 210 100% 95%;
+    --accent-purple: 270 100% 50%;
+    --accent-purple-foreground: 270 100% 95%;
+
+    /* Depth & Shadows */
+    --shadow-soft: 0 4px 6px -1px hsl(220 13% 13% / 0.1);
+    --shadow-medium: 0 10px 15px -3px hsl(220 13% 13% / 0.1);
+    --shadow-strong: 0 25px 50px -12px hsl(220 13% 13% / 0.25);
+    --shadow-glow: 0 0 40px hsl(142 100% 42% / 0.3);
+
+    /* Advanced Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 27% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 27% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 27% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 100% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 98% 46%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 27% 15%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent: 220 27% 15%;
+    --accent-foreground: 142 100% 42%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 27% 20%;
+    --input: 220 27% 20%;
+    --ring: 142 100% 42%;
+    
+    --shadow-glow: 0 0 40px hsl(142 100% 42% / 0.4);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Advanced 3D Blockchain Effects */
+@layer components {
+  .blockchain-bg {
+    background: linear-gradient(135deg, 
+      hsl(var(--background)) 0%,
+      hsl(var(--muted)) 50%,
+      hsl(var(--background)) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .floating-nodes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 30%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--secondary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 60% 80%, hsl(var(--primary) / 0.08) 0%, transparent 50%);
+    animation: float-nodes 20s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .glass-morphism {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.2);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .medical-card {
+    @apply bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md;
+    transition: var(--transition-smooth);
+    transform: translateZ(0);
+  }
+
+  .medical-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .status-active {
+    @apply text-success bg-success/10 border-success/20;
+  }
+
+  .status-expired {
+    @apply text-destructive bg-destructive/10 border-destructive/20;
+  }
+
+  .status-pending {
+    @apply text-warning bg-warning/10 border-warning/20;
+  }
+
+  .hedera-glow {
+    box-shadow: 0 0 20px hsl(var(--hedera-glow) / 0.3);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .particle-field {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .particle-field::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    animation: particle-float 15s linear infinite;
+    box-shadow: 
+      0 0 6px hsl(var(--primary)),
+      10px 10px 0 hsl(var(--secondary) / 0.5),
+      -10px 20px 0 hsl(var(--primary) / 0.3),
+      20px -10px 0 hsl(var(--secondary) / 0.4),
+      -20px -20px 0 hsl(var(--primary) / 0.2);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes float-nodes {
+  0%, 100% { transform: translateX(0) translateY(0) scale(1); }
+  25% { transform: translateX(20px) translateY(-30px) scale(1.1); }
+  50% { transform: translateX(-15px) translateY(-20px) scale(0.9); }
+  75% { transform: translateX(30px) translateY(10px) scale(1.05); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--hedera-glow) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--hedera-glow) / 0.6), 0 0 60px hsl(var(--hedera-glow) / 0.3); }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(100vh) translateX(0px); }
+  25% { transform: translateY(75vh) translateX(100px); }
+  50% { transform: translateY(50vh) translateX(-50px); }
+  75% { transform: translateY(25vh) translateX(75px); }
+  100% { transform: translateY(-10vh) translateX(0px); }
+}
+
+@keyframes morphing-bg {
+  0%, 100% { border-radius: 20px; transform: rotate(0deg); }
+  25% { border-radius: 35px 20px; transform: rotate(1deg); }
+  50% { border-radius: 25px 40px; transform: rotate(-1deg); }
+  75% { border-radius: 40px 25px; transform: rotate(0.5deg); }
+}
+
+.morphing-shape {
+  animation: morphing-bg 8s ease-in-out infinite;
+}
+.contactPad{
+  @apply border-[1px] rounded shadow-md px-4 py-8 my-8;
+  article{
+    @apply flex flex-col gap-2;
+  }
+  label{
+    @apply pl-3;
+  }
+  input{
+    @apply mb-[10px];
+  }
+}
