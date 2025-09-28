@@ -1,10 +1,11 @@
-import React from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { FileText, Download, Eye, Calendar, User, Building } from 'lucide-react';
 
 const MyRecords = () => {
+  const [isUploading, setOpenUploadModal] = useState<boolean>(false)
   const records = [
     {
       id: '1',
@@ -70,6 +71,10 @@ const MyRecords = () => {
     }
   };
 
+  const handleUploadButton = () => { 
+    setOpenUploadModal(true)
+  }
+
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
@@ -79,7 +84,7 @@ const MyRecords = () => {
             View and manage your medical records stored on Hedera blockchain
           </p>
         </div>
-        <Button className="hedera-glow">
+        <Button className="hedera-glow" onClick={handleUploadButton}>
           <FileText className="w-4 h-4 mr-2" />
           Upload Record
         </Button>

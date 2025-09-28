@@ -155,10 +155,9 @@ Simulate offline grant/revoke and show queued txs that later broadcast to Hedera
 
 - **Frontend**: React 18 + TypeScript, Vite
 - **UI**: Shadcn UI + Radix primitives, TailwindCSS
-- **State & data**: React Query, React Hook Form, Zod
+- **State & data**: React Query,
 - **SDKs**: Hedera SDK, HashPack Wallet Connect
-- **Storage**: IPFS (preferred), option for S3/Arweave
-- **Charts**: Recharts
+- **Storage**: IPFS , option for S3/Arweave
 - **Date utils**: date-fns
 - **Animations**: Framer Motion
 - **Testing**: Vitest / React Testing Library

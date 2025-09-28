@@ -101,9 +101,10 @@ const Settings = () => {
               <div className="space-y-2">
                 <Label htmlFor="medical-conditions">Known Medical Conditions</Label>
                 <Textarea 
+                  className="resize-none"
                   id="medical-conditions" 
                   placeholder="List any known medical conditions, allergies, or important medical history"
-                  rows={3}
+                  rows={5}
                 />
               </div>
 
@@ -251,7 +252,7 @@ const Settings = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-4">
-                <div className="flex items-center justify-between">
+                {/* <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium">Share Anonymous Analytics</div>
                     <div className="text-sm text-muted-foreground">Help improve the platform with anonymous usage data</div>
@@ -261,7 +262,7 @@ const Settings = () => {
                     onCheckedChange={(checked) => setPrivacy({...privacy, shareAnalytics: checked})}
                   />
                 </div>
-                <Separator />
+                <Separator /> */}
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium">Emergency Access Override</div>
