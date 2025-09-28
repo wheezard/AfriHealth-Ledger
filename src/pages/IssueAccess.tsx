@@ -39,7 +39,6 @@ const IssueAccess = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would implement the smart contract interaction
     console.log('Issuing access token with:', {
       selectedDataTypes,
       expiryDate,
@@ -90,7 +89,7 @@ const IssueAccess = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                  {/* <div className="space-y-2">
                     <Label>Access Type</Label>
                     <Select value={accessType} onValueChange={setAccessType} required>
                       <SelectTrigger>
@@ -102,7 +101,7 @@ const IssueAccess = () => {
                         <SelectItem value="emergency">Emergency Access</SelectItem>
                       </SelectContent>
                     </Select>
-                  </div>
+                  </div> */}
                   <div className="space-y-2">
                     <Label>Expiry Date</Label>
                     <Popover>
@@ -135,9 +134,10 @@ const IssueAccess = () => {
                 <div className="space-y-2">
                   <Label htmlFor="purpose">Purpose of Access</Label>
                   <Textarea
+                    className='resize-none'
                     id="purpose"
                     placeholder="Describe the reason for data access (e.g., routine consultation, emergency treatment)"
-                    rows={3}
+                    rows={5}
                     required
                   />
                 </div>

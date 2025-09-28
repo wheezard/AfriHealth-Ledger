@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import type { LucideIcon } from "lucide-react";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Users, 
-  Key, 
-  CreditCard, 
-  Settings, 
+import {
+  LayoutDashboard,
+  FileText,
+  Users,
+  Key,
+  CreditCard,
+  Settings,
   Search,
   Plus,
   Eye,
@@ -20,6 +21,13 @@ import {
 } from 'lucide-react';
 import { BlockchainBackground } from '@/components/ui/blockchain-bg';
 
+interface SummaryStat {
+  title: string;
+  value: string;
+  icon: LucideIcon;
+  color?: string;
+  amount?: string;
+}
 export const Dashboard: React.FC = () => {
   const [activeTab] = useState('dashboard');
 
@@ -33,11 +41,11 @@ export const Dashboard: React.FC = () => {
     { id: 'settings', label: 'Settings', icon: Settings },
   ];
 
-  const summaryStats = [
+  const summaryStats:SummaryStat[] = [
     { title: 'My Access Tokens', value: '3', icon: Key, color: 'text-secondary' },
     { title: 'My Consents', value: '5', icon: Users, color: 'text-primary' },
     { title: 'Pending Bills', value: '2', amount: '$150', icon: DollarSign, color: 'text-warning' },
-    { title: 'Recent Activity', value: '3 transactions', icon: Activity, color: 'text-muted-foreground' },
+    { title: 'Total Interactions', value: '3 transactions', icon: Activity, color: 'text-muted-foreground' },
   ];
 
   const recentActivity = [
@@ -47,26 +55,26 @@ export const Dashboard: React.FC = () => {
   ];
 
   const medicalRecords = [
-    { 
-      tokenId: '1234567890', 
-      user: 'Dr. Emily Carter', 
+    {
+      tokenId: '1234567890',
+      user: 'Dr. Emily Carter',
       role: 'Physician',
       expiry: '2024-12-31',
-      status: 'active' 
+      status: 'active'
     },
-    { 
-      tokenId: '9876543210', 
-      user: 'Nurse David Lee', 
+    {
+      tokenId: '9876543210',
+      user: 'Nurse David Lee',
       role: 'Nurse',
       expiry: '2024-06-30',
-      status: 'expired' 
+      status: 'expired'
     },
   ];
 
   return (
     <div className="min-h-screen bg-background relative">
       <BlockchainBackground />
-      
+
       <div className="flex relative z-10">
         <div className="flex-1">
           <main className="p-6 space-y-6">
@@ -75,7 +83,7 @@ export const Dashboard: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {summaryStats.map((stat, index) => (
                     <Card key={stat.title} className="medical-card animate-scale-in"
-                          style={{ animationDelay: `${index * 0.1}s` }}>
+                      style={{ animationDelay: `${index * 0.1}s` }}>
                       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium text-muted-foreground">
                           {stat.title}
@@ -83,7 +91,7 @@ export const Dashboard: React.FC = () => {
                         <stat.icon className={`h-5 w-5 ${stat.color}`} />
                       </CardHeader>
                       <CardContent>
-                        <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                        <div className="text-md md:text-lg lg:text-xl font-bold text-foreground">{stat.value}</div>
                         {stat.amount && (
                           <div className="text-sm text-muted-foreground">{stat.amount}</div>
                         )}
@@ -93,32 +101,38 @@ export const Dashboard: React.FC = () => {
                 </div>
                 <Card className="medical-card">
                   <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
+                    <CardTitle className="flex items-center space-x-2 pb-2">
                       <Activity className="h-5 w-5 text-primary" />
-                      <span>Recent Activity</span>
+                      <span className="text-sm md:text-lg">Recent Activity</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    {recentActivity.map((activity, index) => (
-                      <div key={index} className="flex items-center justify-between py-3 border-b border-border last:border-0">
-                        <div>
-                          <div className="font-medium text-foreground">{activity.title}</div>
-                          <div className="text-sm text-muted-foreground">{activity.subtitle}</div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm text-muted-foreground">{activity.time}</div>
-                          <Badge 
-                            className={`mt-1 ${
-                              activity.status === 'active' ? 'status-active' :
-                              activity.status === 'success' ? 'status-active' : 
-                              'status-pending'
-                            }`}
-                          >
-                            {activity.status}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
+                    {
+                      recentActivity.length > 0 ?
+                        recentActivity.map((activity, index) => (
+                          <div key={index} className="flex items-center justify-between py-3 border-b border-border last:border-0">
+                            <div>
+                              <div className="font-medium text-foreground">{activity.title}</div>
+                              <div className="text-sm text-muted-foreground">{activity.subtitle}</div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm text-muted-foreground">{activity.time}</div>
+                              <Badge
+                                className={`mt-1 ${activity.status === 'active' ? 'status-active' :
+                                  activity.status === 'success' ? 'status-active' :
+                                    'status-pending'
+                                  }`}
+                              >
+                                {activity.status}
+                              </Badge>
+                            </div>
+                          </div>
+                        ))
+                        :
+                        <p className="w-full border-1 border-white text-center my-12 md:my-10 capitalize font-[700] text-xl">
+                          No activity yet
+                        </p>
+                    }
                   </CardContent>
                 </Card>
               </>
@@ -209,7 +223,7 @@ export const Dashboard: React.FC = () => {
                         <label className="text-sm font-medium text-foreground">User Address</label>
                         <Input placeholder="Enter user address" className="mt-1" />
                       </div>
-                      
+
                       <div>
                         <label className="text-sm font-medium text-foreground">Role</label>
                         <Select>
@@ -223,17 +237,17 @@ export const Dashboard: React.FC = () => {
                           </SelectContent>
                         </Select>
                       </div>
-                      
+
                       <div>
                         <label className="text-sm font-medium text-foreground">Validity Period (Days)</label>
                         <Input placeholder="Enter validity period" className="mt-1" />
                       </div>
-                      
+
                       <Button className="w-full hedera-glow">
                         Issue Access Token
                       </Button>
                     </div>
-                    
+
                     <div className="space-y-4">
                       <h3 className="font-semibold text-foreground">Recent Issued Tokens</h3>
                       <div className="space-y-3">
@@ -246,7 +260,7 @@ export const Dashboard: React.FC = () => {
                             <Badge className="status-active">Active</Badge>
                           </div>
                         </div>
-                        
+
                         <div className="p-3 bg-muted rounded-lg">
                           <div className="flex justify-between items-center">
                             <div className="text-sm">
