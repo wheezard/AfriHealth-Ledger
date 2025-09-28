@@ -17,13 +17,13 @@
     --popover-foreground: 220 13% 13%;
 
     /* Lumi Green - Primary Healthcare Brand */
-    --primary: 142 100% 42%;  /* #00D564 */
+    --primary: 142 100% 42%; /* #00D564 */
     --primary-foreground: 0 0% 100%;
     --primary-light: 142 100% 85%;
     --primary-dark: 142 100% 25%;
 
     /* Medical Blue - Secondary Actions */
-    --secondary: 200 98% 46%;  /* #0EA5E9 */
+    --secondary: 200 98% 46%; /* #0EA5E9 */
     --secondary-foreground: 0 0% 100%;
     --secondary-light: 200 98% 85%;
 
@@ -35,8 +35,8 @@
     --accent-foreground: 142 100% 25%;
 
     /* Status Colors */
-    --success: 142 100% 42%;  /* Active/Approved */
-    --warning: 45 93% 58%;    /* Pending */
+    --success: 142 100% 42%; /* Active/Approved */
+    --warning: 45 93% 58%; /* Pending */
     --destructive: 0 84% 60%; /* Expired/Revoked */
     --destructive-foreground: 0 0% 100%;
 
@@ -119,7 +119,7 @@
     --border: 220 27% 20%;
     --input: 220 27% 20%;
     --ring: 142 100% 42%;
-    
+
     --shadow-glow: 0 0 40px hsl(142 100% 42% / 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -139,6 +139,7 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-family: "Gilbert mono", ;
   }
 
   html {
@@ -149,25 +150,38 @@
 /* Advanced 3D Blockchain Effects */
 @layer components {
   .blockchain-bg {
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+      135deg,
       hsl(var(--background)) 0%,
       hsl(var(--muted)) 50%,
-      hsl(var(--background)) 100%);
+      hsl(var(--background)) 100%
+    );
     position: relative;
     overflow: hidden;
   }
 
   .floating-nodes::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-      radial-gradient(circle at 20% 30%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsl(var(--secondary) / 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 60% 80%, hsl(var(--primary) / 0.08) 0%, transparent 50%);
+    background-image: radial-gradient(
+        circle at 20% 30%,
+        hsl(var(--primary) / 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        hsl(var(--secondary) / 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 60% 80%,
+        hsl(var(--primary) / 0.08) 0%,
+        transparent 50%
+      );
     animation: float-nodes 20s ease-in-out infinite;
     pointer-events: none;
   }
@@ -216,15 +230,14 @@
   }
 
   .particle-field::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 1px;
     height: 1px;
     background: hsl(var(--primary));
     border-radius: 50%;
     animation: particle-float 15s linear infinite;
-    box-shadow: 
-      0 0 6px hsl(var(--primary)),
+    box-shadow: 0 0 6px hsl(var(--primary)),
       10px 10px 0 hsl(var(--secondary) / 0.5),
       -10px 20px 0 hsl(var(--primary) / 0.3),
       20px -10px 0 hsl(var(--secondary) / 0.4),
@@ -234,44 +247,82 @@
 
 /* Keyframe Animations */
 @keyframes float-nodes {
-  0%, 100% { transform: translateX(0) translateY(0) scale(1); }
-  25% { transform: translateX(20px) translateY(-30px) scale(1.1); }
-  50% { transform: translateX(-15px) translateY(-20px) scale(0.9); }
-  75% { transform: translateX(30px) translateY(10px) scale(1.05); }
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  25% {
+    transform: translateX(20px) translateY(-30px) scale(1.1);
+  }
+  50% {
+    transform: translateX(-15px) translateY(-20px) scale(0.9);
+  }
+  75% {
+    transform: translateX(30px) translateY(10px) scale(1.05);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(var(--hedera-glow) / 0.3); }
-  50% { box-shadow: 0 0 40px hsl(var(--hedera-glow) / 0.6), 0 0 60px hsl(var(--hedera-glow) / 0.3); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(var(--hedera-glow) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--hedera-glow) / 0.6),
+      0 0 60px hsl(var(--hedera-glow) / 0.3);
+  }
 }
 
 @keyframes particle-float {
-  0% { transform: translateY(100vh) translateX(0px); }
-  25% { transform: translateY(75vh) translateX(100px); }
-  50% { transform: translateY(50vh) translateX(-50px); }
-  75% { transform: translateY(25vh) translateX(75px); }
-  100% { transform: translateY(-10vh) translateX(0px); }
+  0% {
+    transform: translateY(100vh) translateX(0px);
+  }
+  25% {
+    transform: translateY(75vh) translateX(100px);
+  }
+  50% {
+    transform: translateY(50vh) translateX(-50px);
+  }
+  75% {
+    transform: translateY(25vh) translateX(75px);
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0px);
+  }
 }
 
 @keyframes morphing-bg {
-  0%, 100% { border-radius: 20px; transform: rotate(0deg); }
-  25% { border-radius: 35px 20px; transform: rotate(1deg); }
-  50% { border-radius: 25px 40px; transform: rotate(-1deg); }
-  75% { border-radius: 40px 25px; transform: rotate(0.5deg); }
+  0%,
+  100% {
+    border-radius: 20px;
+    transform: rotate(0deg);
+  }
+  25% {
+    border-radius: 35px 20px;
+    transform: rotate(1deg);
+  }
+  50% {
+    border-radius: 25px 40px;
+    transform: rotate(-1deg);
+  }
+  75% {
+    border-radius: 40px 25px;
+    transform: rotate(0.5deg);
+  }
 }
 
 .morphing-shape {
   animation: morphing-bg 8s ease-in-out infinite;
 }
-.contactPad{
+.contactPad {
   @apply border-[1px] rounded shadow-md px-4 py-8 my-8;
-  article{
+  article {
     @apply flex flex-col gap-2;
   }
-  label{
+  label {
     @apply pl-3;
   }
-  input{
+  input {
     @apply mb-[10px];
   }
 }
