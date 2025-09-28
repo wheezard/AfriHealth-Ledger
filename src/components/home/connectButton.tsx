@@ -18,11 +18,9 @@ export function WalletButton() {
 
   if (!userAccountId) {
     return (
-      <button
+      <button disabled={!dAppConnector} onClick={handleLogin}
         className="px-6 py-2 bg-hedera-purple hover:bg-opacity-90 text-white dark:bg-[#00D74E] dark:hover:bg-green-800 hover:scale-105 font-semibold rounded-full transition-all duration-300 hover-scale border-2 border-hedera-purple hover:border-neon-accent"
-        onClick={handleLogin}
-        disabled={!dAppConnector}
-      >
+        >
         Connect Wallet
       </button>
     );
@@ -34,7 +32,7 @@ export function WalletButton() {
         {`${userAccountId.slice(0, 4)}...${userAccountId.slice(-3)}`}
       </div>
       <button onClick={handleDisconnect} disabled={!dAppConnector}
-        className="px-4 py-2 hover:scale-105 bg-red-400 text-white dark: hover:bg-error/20 text-secondary hover:text-error font-medium rounded-full transition-all duration-300 text-sm">
+        className="px-4 py-2 hover:scale-105 bg-red-400 text-white dark:hover:bg-error/20  hover:text-error font-medium rounded-full transition-all duration-300 text-sm">
         Disconnect
       </button>
     </div>

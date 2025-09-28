@@ -1,9 +1,7 @@
 import React from 'react';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/AppSidebar';
-// import { useWallet } from '@/contexts/WalletContext';
 import { Button } from '@/components/ui/button';
-// import { Badge, User, LogOut  } from '@/components/ui/badge';
 import { Bell } from 'lucide-react';
 import { ThemeToggle } from './ui/theme-toggle';
 import { WalletButton } from './home/connectButton';
@@ -27,13 +25,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
                 <p className="text-sm text-muted-foreground">Powered by Hedera blockchain</p>
               </div>
             </div>
-            
             <div className="flex items-center gap-4">
               <ThemeToggle />
               <Button variant="ghost" size="sm" className="hover:shadow-md hover:p-[10px] transition-all transform duration-300 ">
                 <Bell className="h-4 w-4" />
               </Button>
-              
               <div className="flex items-center gap-2">
                 <WalletButton />
               </div>
